@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:food4good_app/app/data/model/product.dart';
 
 class MainScreen extends StatefulWidget {
   static const String SCREEN_NAME = 'MainScreen';
@@ -14,15 +15,23 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   double textSize;
+  List<Product> chosenProduct = new List();
+  Product _chosenProduct;
 
   @override
   void initState() {
     super.initState();
   }
 
-
   @override
   Widget build(BuildContext context) {
+    _chosenProduct = new Product(name: "חלב", price: 5, units: 1); //temp, for testing
+    chosenProduct.add(_chosenProduct); //temp , for testing
+    _chosenProduct = new Product(name: "חזה עוף", price: 20, units: 3); //temp, for testing
+    chosenProduct.add(_chosenProduct); //temp , for testing
+    _chosenProduct = new Product(name: "לחם אחיד פרוס", price: 15, units: 1); //temp, for testing
+    chosenProduct.add(_chosenProduct); //temp , for testing
+
     return Scaffold(
       appBar: AppBar(
         title: Text(''),
@@ -37,11 +46,14 @@ class _MainScreenState extends State<MainScreen> {
             SizedBox(width: 15.0),
             _getDivider(),
             _getProducts(),
-            _getDivider(),
+          //Stack(
+          //children: <Widget>[
             _getShoppingList(),
             _getPressToOrder(),
+        //    ],
+      //  ),
           ],
-        ),
+         ),
       ),
     );
   }
@@ -120,17 +132,29 @@ class _MainScreenState extends State<MainScreen> {
     );
     }
 
-
   _getShoppingList() {
   return Expanded(
     child: Container(
-      child: Text('זוהי רשימת הקניות'),
+        child: ListTile(
+          //leading: ,
+      title: Text(chosenProduct[0].name + "     "  + chosenProduct[0].price.toString() + ' ש"ח'
+      ),
+        ),
+        padding: EdgeInsets.all(6.0),
+        decoration: BoxDecoration(color: Colors.white,
+            border: Border.all(width: 20.0, color: Colors.blue),
+            borderRadius: BorderRadius.circular(12),
+            boxShadow: [BoxShadow(color: Colors.grey,
+                offset: Offset(3.0, 3.0)),
+            ]
+        )
     ),
   );
   }
 
   _getPressToOrder() {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.end,
       children: <Widget>[
         ButtonTheme(
           minWidth: 150.0,

@@ -9,7 +9,7 @@ class _HomeState extends State<Home> {
 
   int _currentIndex = 0;
   Icon cusIcon = Icon(Icons.search);
-  Widget cusSearchBar = Text("food4good");
+  Widget cusSearchBar = Text("פשוט_לקנות");
 
   @override
   Widget build(BuildContext context) {
@@ -19,24 +19,7 @@ class _HomeState extends State<Home> {
           IconButton(
             onPressed: (){
               setState(() {
-                if(this.cusIcon.icon == Icons.search){
-                  this.cusIcon = Icon(Icons.cancel);
-                  this.cusSearchBar = TextField(
-                    textInputAction: TextInputAction.go,
-                    decoration: InputDecoration(
-                      border: InputBorder.none,
-                      hintText: "search for dishes\restaurants"
-                    ),
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16.0,
 
-                    ),
-                  );
-                }else{
-                  this.cusIcon = Icon(Icons.search);
-                  this.cusSearchBar = Text("food4good");
-                }
               });
             },
             icon: cusIcon,
