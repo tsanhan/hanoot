@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "369467943489",
+    "firebase_url": "https://hanoot-483d8.firebaseio.com",
+    "project_id": "hanoot-483d8",
+    "storage_bucket": "hanoot-483d8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:369467943489:android:bd0cb9d3768b15be75f4c0",
+        "android_client_info": {
+          "package_name": "com.example.hackton"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "369467943489-k3talnahvdmlg94ci3tqoai9mce5hejh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAOsotNhTGRDjDxmLCFnsUHqxaKVyCefSk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "369467943489-k3talnahvdmlg94ci3tqoai9mce5hejh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
