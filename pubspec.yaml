@@ -38,12 +38,12 @@ flutter_icons:
 
 flutter:
   uses-material-design: true
-  assets:
-    - assets/images/
-  fonts:
-    - family: Rubik
-      fonts:
-        - asset: assets/fonts/Rubik-Regular.ttf
+#  assets:
+#    - assets/images/
+#  fonts:
+#    - family: Rubik
+#      fonts:
+#        - asset: assets/fonts/Rubik-Regular.ttf
 firebase_core:
 
 firebase_messaging:
