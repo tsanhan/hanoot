@@ -50,28 +50,30 @@ class _MainScreenState extends State<MainScreen> {
     _chosenProduct = new Product(name: "לחם אחיד פרוס", price: 15, units: 1); //temp, for testing
     chosenProduct.add(_chosenProduct); //temp , for testing
 
-    return Scaffold(
+    return SafeArea(
+      child: Scaffold(
 //      appBar: AppBar(
 //        title: Text(''),
 //        backgroundColor: Colors.grey[100],
 //      ),
-      body: Container(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            _getCategories(),
-            SizedBox(width: 15.0),
-            _getDivider(),
-            _getProducts(),
-          //Stack(
-          //children: <Widget>[
-            _getShoppingList(),
-            _getPressToOrder(),
-        //    ],
-      //  ),
-          ],
-         ),
+        body: Container(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              _getCategories(),
+              SizedBox(width: 15.0),
+              _getDivider(),
+              _getProducts(),
+            //Stack(
+            //children: <Widget>[
+              _getShoppingList(),
+              _getPressToOrder(),
+          //    ],
+        //  ),
+            ],
+           ),
+        ),
       ),
     );
   }
