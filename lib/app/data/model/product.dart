@@ -1,5 +1,6 @@
 class Product {
   final String image;
+  final String name;
   final int units;
   final double price;     // price per one
   final String unitName;
