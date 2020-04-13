@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'screens/MainScreen.dart';
+import 'app/presentation/screens/MainScreen.dart';
 
 void main() => runApp(MyApp());
 
