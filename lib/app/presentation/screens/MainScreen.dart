@@ -65,9 +65,11 @@ class _MainScreenState extends State<MainScreen> {
               SizedBox(width: 15.0),
               _getDivider(),
               _getProducts(),
+              SizedBox(height: 10.0),
             //Stack(
             //children: <Widget>[
               _getShoppingList(),
+              SizedBox(height: 10.0),
               _getPressToOrder(),
           //    ],
         //  ),
