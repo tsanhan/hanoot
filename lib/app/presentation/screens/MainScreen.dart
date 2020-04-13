@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:io';
-
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class MainScreen extends StatefulWidget {
   static const String SCREEN_NAME = 'MainScreen';
@@ -33,7 +33,6 @@ class _MainScreenState extends State<MainScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            _getCategories(),
             SizedBox(width: 15.0),
             _getDivider(),
             _getProducts(),
@@ -44,81 +43,34 @@ class _MainScreenState extends State<MainScreen> {
         ),
       ),
     );
+
   }
 
   _getProducts() {
-    return Expanded(
-      child: Column(
-          children: <Widget>[
-            Text('כאן יופיעו המוצרים')
-            ],
+    return Center(
+      child: Container(
+        height: 250.0,
+        width: 1000.0,
+        child: Ink(
+          decoration: ShapeDecoration(
+            color: Colors.blue,
+            shape: CircleBorder(),
+          ),
+          child: IconButton(
+            icon: Icon(Icons.mic),
+            color: Colors.white,
+
+            iconSize: 140,
+            onPressed: () {
+              print("You Pressed the icon!");
+            },
+          ),
+        ),
       ),
     );
   }
 
-  _getCategories() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          ButtonTheme(
-            minWidth: 0.0,
-            height: 50.0,
-            buttonColor: Colors.green,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(7.0),
-            ),
-            textTheme: ButtonTextTheme.primary,
-            child: RaisedButton(
-              onPressed: () {
-                ;
-              },
-              child: Text(
-                'ירקות',
-                style: TextStyle(fontSize: 20.0, color: Colors.white),
-              ),
-            ),
-          ),
-          SizedBox(width: (5.0)),
-          ButtonTheme(
-            minWidth: 0.0,
-            height: 50.0,
-            buttonColor: Colors.blue,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(7.0),
-            ),
-            textTheme: ButtonTextTheme.primary,
-            child: RaisedButton(
-              onPressed: () {
-                ;
-              },
-              child: Text(
-                'חלב',
-                style: TextStyle(fontSize: 20.0, color: Colors.white),
-              ),
-            ),
-          ),
-          SizedBox(width: (5.0)),
-          ButtonTheme(
-            minWidth: 0.0,
-            height: 50.0,
-            buttonColor: Colors.red,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(7.0),
-            ),
-            textTheme: ButtonTextTheme.primary,
-            child: RaisedButton(
-              onPressed: () {
-                ;
-              },
-              child: Text(
-                'בשר',
-                style: TextStyle(fontSize: 20.0, color: Colors.white),
-              ),
-            ),
-          ),
-    ],
-    );
-    }
+
 
 
   _getShoppingList() {
