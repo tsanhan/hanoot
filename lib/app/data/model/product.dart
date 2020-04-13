@@ -4,6 +4,7 @@ class Product {
   final int units;
   final double price;     // price per one
   final String unitName;
+  final String name;
 
-  Product({this.image, this.name, this.units, this.unitName, this.price});
+  Product({this.name, this.image, this.units, this.unitName, this.price});
 }
