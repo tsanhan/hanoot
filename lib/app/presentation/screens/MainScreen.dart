@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import '../../data/model/product.dart';
 import '../../data/repository/products_repository.dart';
 
+//import 'package:speech_to_text/speech_to_text.dart' as stt;
 
 class MainScreen extends StatefulWidget {
   static const String SCREEN_NAME = 'MainScreen';
@@ -24,6 +25,12 @@ class _MainScreenState extends State<MainScreen> {
   List<Product> chosenProduct = new List();
   Product _chosenProduct;
 
+//SpeechRecognition _speechRecognition;
+//stt.SpeechToText speech = stt.SpeechToText();
+bool _isAvailable = false;
+bool _isListening = false;
+
+String resultText = '';
 
   @override
   void initState() {
@@ -40,6 +47,7 @@ class _MainScreenState extends State<MainScreen> {
     });
   }
 
+
   @override
   Widget build(BuildContext context) {
     _chosenProduct = new Product(name: "חלב", price: 5, units: 1); //temp, for testing
@@ -48,6 +56,8 @@ class _MainScreenState extends State<MainScreen> {
     chosenProduct.add(_chosenProduct); //temp , for testing
     _chosenProduct = new Product(name: "לחם אחיד פרוס", price: 15, units: 1); //temp, for testing
     chosenProduct.add(_chosenProduct); //temp , for testing
+
+
 
     return SafeArea(
       child: Scaffold(
