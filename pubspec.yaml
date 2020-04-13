@@ -7,7 +7,6 @@ environment:
   sdk: ">=2.4.0 <3.0.0"
 
 dependencies:
-  flutter_svg: ^0.17.4
   flutter:
     sdk: flutter
   flutter_localizations:
@@ -35,10 +34,18 @@ dev_dependencies:
 flutter_icons:
   android: "launcher_icon"
   ios: true
-  image_path: "assets/icon/icon.png"
+  #image_path: "assets/icon/icon.png"
 
 flutter:
   uses-material-design: true
-  assets:
-    - assets/images/
+#  assets:
+#    - assets/images/
+#  fonts:
+#    - family: Rubik
+#      fonts:
+#        - asset: assets/fonts/Rubik-Regular.ttf
+firebase_core:
 
+firebase_messaging:
+module:
+  androidX: true
