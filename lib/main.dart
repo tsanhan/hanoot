@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'app/presentation/screens/MainScreen.dart';
 
 import 'services/test_services.dart';
 
@@ -11,9 +13,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-      body:TestServices())
-      ,);
-    
-  }
+        localizationsDelegates: [
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+        ],
+        supportedLocales: [
+          const Locale('he', 'he_HE')
+          // OR Locale('ar', 'AE') OR Other RTL locales
+        ],
+        initialRoute: MainScreen.SCREEN_NAME,
+        routes: {
+          MainScreen.SCREEN_NAME: (context) => MainScreen(),
+        });
+  } //
 }
