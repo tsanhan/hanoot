@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:food4good_app/app/data/model/product.dart';
 import 'package:food4good_app/app/data/repository/products_repository.dart';
 import 'package:food4good_app/app/presentation/widgets/Item.dart';
+import 'package:food4good_app/services/text_to_image.dart';
 //import 'package:speech_to_text/speech_to_text.dart' as stt;
 //import 'package:speech_recognition/speech_recognition.dart';
 
@@ -64,7 +65,7 @@ double totalSum = 0.0;
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               _getCategories(),
-              SizedBox(width: 15.0),
+              //SizedBox(width: 15.0),
               _getDivider(),
               _getProducts(),
               _getChosenItem(),
@@ -75,7 +76,7 @@ double totalSum = 0.0;
               Align(
                 alignment: Alignment.topRight,
                 child: Text('הקניות שלי',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15.0),
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
                 ),
               ),
               _getShoppingList(),
@@ -106,7 +107,7 @@ double totalSum = 0.0;
             iconSize: 140,
             onPressed: () {
               setState(() {
-                resultText = "speechText";
+                resultText = "חלב";
                 pressed = true;
               //  if (_isAvailable && !_isListening)
                 //  _speechRecognition
@@ -130,7 +131,8 @@ _getChosenItem() {
       return Row(
       children: <Widget> [
         SizedBox(width: 5.0),
-      Icon(Icons.fastfood),
+      //Image (image: NetworkImage(TextToImage(resultText)),
+      //),
         SizedBox(width: 15.0),
   Text(resultText,
     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30.0),),
@@ -195,21 +197,20 @@ _getChosenItem() {
 
   _getShoppingList() {
       return Expanded(
+        child: SingleChildScrollView(
           child: Container(
-      child: ListTile(
-      //leading: ,
-      title: Text(chosenProduct[0].name + "     "  + chosenProduct[0].price.toString() + ' ש"ח'
-      ),
-      ),
-      padding: EdgeInsets.all(6.0),
-      decoration: BoxDecoration(color: Colors.white,
-      border: Border.all(width: 20.0, color: Colors.blue),
-      borderRadius: BorderRadius.circular(12),
-      boxShadow: [BoxShadow(color: Colors.grey,
-      offset: Offset(3.0, 3.0)),
-      ]
-      )
-      ),
+            child: Column(
+              children: _products
+                  .map((product) => Item(
+                product: product,
+                onPressed: () {
+                  _addToCart(product);
+                },
+              ))
+                  .toList(),
+            ),
+          ),
+        ),
       );
   }
 
