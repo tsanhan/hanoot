@@ -2,11 +2,9 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:food4good_app/app/data/model/product.dart';
-import 'package:food4good_app/app/data/repository/products_repository.dart';
-import 'package:food4good_app/app/presentation/widgets/Item.dart';
-//import 'package:speech_to_text/speech_to_text.dart' as stt;
-//import 'package:speech_recognition/speech_recognition.dart';
+import '../../data/model/product.dart';
+import '../../data/repository/products_repository.dart';
+
 
 class MainScreen extends StatefulWidget {
   static const String SCREEN_NAME = 'MainScreen';
@@ -25,20 +23,11 @@ class _MainScreenState extends State<MainScreen> {
 
   List<Product> chosenProduct = new List();
   Product _chosenProduct;
-  List<String>  productList = ['חלב', 'לחם'];
-//SpeechRecognition _speechRecognition;
-//stt.SpeechToText speech = stt.SpeechToText();
-bool _isAvailable = false;
-bool _isListening = false;
-bool pressed = false;
 
-String resultText = '';
-double totalSum = 0.0;
 
   @override
   void initState() {
     super.initState();
-  //  initSpeechRecognizer();
     _init();
   }
 
@@ -55,9 +44,17 @@ double totalSum = 0.0;
   Widget build(BuildContext context) {
     _chosenProduct = new Product(name: "חלב", price: 5, units: 1); //temp, for testing
     chosenProduct.add(_chosenProduct); //temp , for testing
+    _chosenProduct = new Product(name: "חזה עוף", price: 20, units: 3); //temp, for testing
+    chosenProduct.add(_chosenProduct); //temp , for testing
+    _chosenProduct = new Product(name: "לחם אחיד פרוס", price: 15, units: 1); //temp, for testing
+    chosenProduct.add(_chosenProduct); //temp , for testing
 
     return SafeArea(
       child: Scaffold(
+//      appBar: AppBar(
+//        title: Text(''),
+//        backgroundColor: Colors.grey[100],
+//      ),
         body: Container(
           padding: const EdgeInsets.all(8.0),
           child: Column(
@@ -67,17 +64,9 @@ double totalSum = 0.0;
               SizedBox(width: 15.0),
               _getDivider(),
               _getProducts(),
-              _getChosenItem(),
-              SizedBox(height: 10.0),
             //Stack(
             //children: <Widget>[
-              _getDivider(),
-              Align(
-                alignment: Alignment.topRight,
-                child: Text('הקניות שלי'),
-              ),
               _getShoppingList(),
-              SizedBox(height: 10.0),
               _getPressToOrder(),
           //    ],
         //  ),
@@ -87,12 +76,40 @@ double totalSum = 0.0;
       ),
     );
   }
+//
+//  @override
+//  Widget build(BuildContext context) {
+//    return SafeArea(
+//      child: Scaffold(
+////      appBar: AppBar(
+////        title: Text(''),
+////        backgroundColor: Colors.grey[100],
+////      ),
+//        body: Container(
+//          padding: const EdgeInsets.all(8.0),
+//          child: Column(
+//            crossAxisAlignment: CrossAxisAlignment.center,
+//            children: <Widget>[
+//              _getCategories(),
+//              SizedBox(width: 15.0),
+//              _getDivider(),
+//              _getProducts(),
+//              _getDivider(),
+//              _getShoppingList(),
+//              _getPressToOrder(),
+//            ],
+//          ),
+//        ),
+//      ),
+//    );
+//  }
+
 
   _getProducts() {
     return Center(
       child: Container(
-        height: 230.0,
-        width:1000.0,
+        height: 250.0,
+        width: 1000.0,
         child: Ink(
           decoration: ShapeDecoration(
             color: Colors.blue,
@@ -101,16 +118,10 @@ double totalSum = 0.0;
           child: IconButton(
             icon: Icon(Icons.mic),
             color: Colors.white,
+
             iconSize: 140,
             onPressed: () {
-              setState(() {
-                resultText = "speechText";
-                pressed = true;
-              //  if (_isAvailable && !_isListening)
-                //  _speechRecognition
-                  //    .listen(locale: "he")
-                    //  .then((result) => print('$result'));
-             });
+              print("You Pressed the icon!");
             },
           ),
         ),
@@ -118,46 +129,9 @@ double totalSum = 0.0;
     );
   }
 
-_getChosenItem() {
-    if(pressed != true)
-      return Row(
-          children: <Widget> [
-            ],
-      );
-    else
-      return Row(
-      children: <Widget> [
-        SizedBox(width: 5.0),
-      Icon(Icons.fastfood),
-        SizedBox(width: 15.0),
-  Text(resultText,
-    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30.0),),
-        SizedBox(width: 30.0),
-        ButtonTheme(
-          minWidth: 0.0,
-          height: 50.0,
-          buttonColor: Colors.green,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(7.0),
-          ),
-          textTheme: ButtonTextTheme.primary,
-          child: RaisedButton(
-            onPressed: () {
-              setState((){
-                pressed = false;
-             // totalSum += 20;
-              });
-            },
-            child: Text(
-              'אישור',
-              style: TextStyle(fontSize: 20.0, color: Colors.white),
-            ),
-          ),
-        ),
-  ],
 
-    );
-}
+
+
 
   _getCategories() {
     return Row(
@@ -193,20 +167,21 @@ _getChosenItem() {
 
   _getShoppingList() {
   return Expanded(
-      child: SingleChildScrollView(
-      child: Container(
-      child: Column(
-      children: _products
-      .map((product) => Item(
-    product: product,
-    onPressed: () {
-      ;
-    },
-  ))
-        .toList(),
-    ),
-    ),
+    child: Container(
+        child: ListTile(
+          //leading: ,
+      title: Text(chosenProduct[0].name + "     "  + chosenProduct[0].price.toString() + ' ש"ח'
       ),
+        ),
+        padding: EdgeInsets.all(6.0),
+        decoration: BoxDecoration(color: Colors.white,
+            border: Border.all(width: 20.0, color: Colors.blue),
+            borderRadius: BorderRadius.circular(12),
+            boxShadow: [BoxShadow(color: Colors.grey,
+                offset: Offset(3.0, 3.0)),
+            ]
+        )
+    ),
   );
   }
 
@@ -224,8 +199,7 @@ _getChosenItem() {
           textTheme: ButtonTextTheme.primary,
           child: RaisedButton(
             onPressed: () {
-              productList.add(resultText);
-              resultText = '';
+              ;
             },
             child: Text(
               'הזמן',

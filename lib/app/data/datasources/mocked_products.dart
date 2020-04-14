@@ -1,4 +1,4 @@
-import 'package:food4good_app/app/data/model/product.dart';
+import '../model/product.dart';
 
 List<Product> _milk = [
   Product(
