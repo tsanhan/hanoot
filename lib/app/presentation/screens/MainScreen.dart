@@ -25,7 +25,7 @@ class _MainScreenState extends State<MainScreen> {
 
   List<Product> chosenProduct = new List();
   Product _chosenProduct;
-  List<String>  productList = ['חלב', 'לחם'];
+  //List<String>  productList = ['חלב', 'לחם'];
 //SpeechRecognition _speechRecognition;
 //stt.SpeechToText speech = stt.SpeechToText();
 bool _isAvailable = false;
@@ -192,22 +192,23 @@ _getChosenItem() {
 
 
   _getShoppingList() {
-  return Expanded(
-      child: SingleChildScrollView(
-      child: Container(
-      child: Column(
-      children: _products
-      .map((product) => Item(
-    product: product,
-    onPressed: () {
-      ;
-    },
-  ))
-        .toList(),
-    ),
-    ),
+      return Expanded(
+          child: Container(
+      child: ListTile(
+      //leading: ,
+      title: Text(chosenProduct[0].name + "     "  + chosenProduct[0].price.toString() + ' ש"ח'
       ),
-  );
+      ),
+      padding: EdgeInsets.all(6.0),
+      decoration: BoxDecoration(color: Colors.white,
+      border: Border.all(width: 20.0, color: Colors.blue),
+      borderRadius: BorderRadius.circular(12),
+      boxShadow: [BoxShadow(color: Colors.grey,
+      offset: Offset(3.0, 3.0)),
+      ]
+      )
+      ),
+      );
   }
 
   _getPressToOrder() {
