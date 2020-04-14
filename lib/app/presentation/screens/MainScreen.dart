@@ -74,7 +74,9 @@ double totalSum = 0.0;
               _getDivider(),
               Align(
                 alignment: Alignment.topRight,
-                child: Text('הקניות שלי'),
+                child: Text('הקניות שלי',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15.0),
+                ),
               ),
               _getShoppingList(),
               SizedBox(height: 10.0),
@@ -225,7 +227,7 @@ _getChosenItem() {
           textTheme: ButtonTextTheme.primary,
           child: RaisedButton(
             onPressed: () {
-              productList.add(resultText);
+              //productList.add(resultText);
               resultText = '';
             },
             child: Text(
