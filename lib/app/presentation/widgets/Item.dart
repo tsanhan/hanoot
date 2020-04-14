@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:food4good_app/app/data/model/product.dart';
+import '../../data/model/product.dart';
 import 'package:sprintf/sprintf.dart';
 
 class Item extends StatelessWidget {

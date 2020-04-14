@@ -2,9 +2,8 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:food4good_app/app/data/model/product.dart';
-import 'package:food4good_app/app/data/repository/products_repository.dart';
-import 'package:food4good_app/app/presentation/widgets/Item.dart';
+import '../../data/model/product.dart';
+import '../../data/repository/products_repository.dart';
 
 
 class MainScreen extends StatefulWidget {

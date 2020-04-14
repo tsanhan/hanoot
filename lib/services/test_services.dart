@@ -1,7 +1,9 @@
+
+import './auth.dart';
+import './text_to_image.dart';
 import 'package:speech_recognition/speech_recognition.dart';
 import 'package:flutter/material.dart';
-import 'package:hackton/services/auth.dart';
-import 'package:hackton/services/text_to_image.dart';
+
 
 
 import './stt.dart';

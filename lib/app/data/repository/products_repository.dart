@@ -1,5 +1,5 @@
-import 'package:food4good_app/app/data/datasources/mocked_products.dart';
-import 'package:food4good_app/app/data/model/product.dart';
+import '../datasources/mocked_products.dart';
+import '../model/product.dart';
 
 abstract class ProductsRepository {
   Future<List<Product>> fetchProductByCategoryId(int categoryId);
