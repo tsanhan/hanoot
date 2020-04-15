@@ -23,10 +23,10 @@ class _MainScreenState extends State<MainScreen> {
   var _products = <Product>[]; // yakir
 
   var productsRepository = ProductsRepositoryImpl();
-
+  int len;
   List<Product> chosenProduct = new List();
   Product _chosenProduct;
-  //List<String>  productList = ['חלב', 'לחם'];
+  List productList = new List();
 //SpeechRecognition _speechRecognition;
 //stt.SpeechToText speech = stt.SpeechToText();
 bool _isAvailable = false;
@@ -107,7 +107,7 @@ double totalSum = 0.0;
             iconSize: 140,
             onPressed: () {
               setState(() {
-                resultText = "חלב";
+                resultText = "חלב ";
                 pressed = true;
               //  if (_isAvailable && !_isListening)
                 //  _speechRecognition
@@ -149,7 +149,9 @@ _getChosenItem() {
             onPressed: () {
               setState((){
                 pressed = false;
-             // totalSum += 20;
+                productList.add(resultText);
+                len = productList.length;
+                //resultText = '';
               });
             },
             child: Text(
@@ -194,24 +196,13 @@ _getChosenItem() {
     );
   }
 
-
   _getShoppingList() {
-      return Expanded(
-        child: SingleChildScrollView(
-          child: Container(
-            child: Column(
-              children: _products
-                  .map((product) => Item(
-                product: product,
-                onPressed: () {
-                  _addToCart(product);
-                },
-              ))
-                  .toList(),
-            ),
-          ),
-        ),
-      );
+    return Expanded(
+      child: ListView.builder(
+        itemBuilder: (_,int index) => EachList(this.productList[index]),
+        itemCount: this.productList.length,
+      ),
+    );
   }
 
   _getPressToOrder() {
@@ -228,8 +219,7 @@ _getChosenItem() {
           textTheme: ButtonTextTheme.primary,
           child: RaisedButton(
             onPressed: () {
-              //productList.add(resultText);
-              resultText = '';
+
             },
             child: Text(
               'הזמן',
@@ -258,4 +248,16 @@ _getChosenItem() {
 
 // items
 
+}
+
+class EachList extends StatelessWidget {
+  final String name;
+  EachList(this.name);
+
+  @override
+  Widget build(BuildContext context) {
+    return new Card(
+      child: Text(name),
+    );
+  }
 }
